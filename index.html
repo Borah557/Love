@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Love Future Predictor 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --accent: #7b2cbf;
+            --neon: #00f5d4;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: background 0.5s ease;
+        }
+
+        body.light-mode {
+            background: linear-gradient(135deg, #f5f7fa, #e4e8f0);
+            color: #333;
+            --glass: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --dark: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            background: linear-gradient(45deg, var(--primary), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .light-mode .tagline {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .calculator-container {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            transition: all 0.5s ease;
+            animation: floatUp 0.8s ease-out;
+        }
+
+        .calculator-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 245, 212, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--neon);
+        }
+
+        .light-mode label {
+            color: var(--accent);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .light-mode input, .light-mode select {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--neon);
+            box-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+        }
+
+        .couple-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .heart-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .heart-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        button {
+            background: linear-gradient(45deg, var(--primary), var(--neon));
+            color: var(--dark);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            display: block;
+            margin: 2rem auto 0;
+            width: fit-content;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 245, 212, 0.5);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .result-container {
+            text-align: center;
+            padding: 3rem;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .result-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--neon);
+        }
+
+        .light-mode .result-title {
+            color: var(--accent);
+        }
+
+        .result-score {
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 1rem 0;
+            text-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+        }
+
+        .result-description {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .light-mode .result-description {
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .compatibility-factors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .factor {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .light-mode .factor {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .factor:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .factor-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--neon);
+        }
+
+        .light-mode .factor-title {
+            color: var(--accent);
+        }
+
+        .factor-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+
+        .light-mode .factor-bar {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .factor-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--neon));
+            border-radius: 4px;
+            transition: width 1s ease-out;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .action-btn {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .light-mode .action-btn {
+            background: rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .action-btn:hover {
+            background: rgba(0, 245, 212, 0.2);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .light-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        #threejs-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .light-mode footer {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes floatUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .calculator-container {
+                padding: 1.5rem;
+            }
+
+            .couple-inputs {
+                grid-template-columns: 1fr;
+            }
+
+            button {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-toggle" id="themeToggle">
+        <span id="themeIcon">🌙</span>
+    </div>
+
+    <div id="threejs-canvas"></div>
+
+    <div class="container">
+        <header>
+            <h1>AI LOVE FUTURE PREDICTOR</h1>
+            <p class="tagline">Powered by Neural Love Analysis • 2025 Edition</p>
+        </header>
+
+        <div class="calculator-container">
+            <form id="loveCalculator">
+                <div class="couple-inputs">
+                    <div class="form-group">
+                        <label for="name1">Your Name</label>
+                        <input type="text" id="name1" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="name2">Partner's Name</label>
+                        <input type="text" id="name2" required placeholder="Enter their name">
+                    </div>
+                </div>
+
+                <div class="heart-divider">
+                    <div class="heart-icon">❤️</div>
+                </div>
+
+                <div class="couple-inputs">
+                    <div class="form-group">
+                        <label for="birthdate1">Your Birthdate</label>
+                        <input type="date" id="birthdate1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate2">Partner's Birthdate</label>
+                        <input type="date" id="birthdate2" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="personality1">Your Personality Type</label>
+                    <select id="personality1" required>
+                        <option value="">Select personality</option>
+                        <option value="INTJ">INTJ (Architect)</option>
+                        <option value="INTP">INTP (Logician)</option>
+                        <option value="ENTJ">ENTJ (Commander)</option>
+                        <option value="ENTP">ENTP (Debater)</option>
+                        <option value="INFJ">INFJ (Advocate)</option>
+                        <option value="INFP">INFP (Mediator)</option>
+                        <option value="ENFJ">ENFJ (Protagonist)</option>
+                        <option value="ENFP">ENFP (Campaigner)</option>
+                        <option value="ISTJ">ISTJ (Logistician)</option>
+                        <option value="ISFJ">ISFJ (Defender)</option>
+                        <option value="ESTJ">ESTJ (Executive)</option>
+                        <option value="ESFJ">ESFJ (Consul)</option>
+                        <option value="ISTP">ISTP (Virtuoso)</option>
+                        <option value="ISFP">ISFP (Adventurer)</option>
+                        <option value="ESTP">ESTP (Entrepreneur)</option>
+                        <option value="ESFP">ESFP (Entertainer)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="personality2">Partner's Personality Type</label>
+                    <select id="personality2" required>
+                        <option value="">Select personality</option>
+                        <option value="INTJ">INTJ (Architect)</option>
+                        <option value="INTP">INTP (Logician)</option>
+                        <option value="ENTJ">ENTJ (Commander)</option>
+                        <option value="ENTP">ENTP (Debater)</option>
+                        <option value="INFJ">INFJ (Advocate)</option>
+                        <option value="INFP">INFP (Mediator)</option>
+                        <option value="ENFJ">ENFJ (Protagonist)</option>
+                        <option value="ENFP">ENFP (Campaigner)</option>
+                        <option value="ISTJ">ISTJ (Logistician)</option>
+                        <option value="ISFJ">ISFJ (Defender)</option>
+                        <option value="ESTJ">ESTJ (Executive)</option>
+                        <option value="ESFJ">ESFJ (Consul)</option>
+                        <option value="ISTP">ISTP (Virtuoso)</option>
+                        <option value="ISFP">ISFP (Adventurer)</option>
+                        <option value="ESTP">ESTP (Entrepreneur)</option>
+                        <option value="ESFP">ESFP (Entertainer)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="relationshipLength">Relationship Duration</label>
+                    <select id="relationshipLength" required>
+                        <option value="">Select duration</option>
+                        <option value="0">Less than 6 months</option>
+                        <option value="6">6 months - 1 year</option>
+                        <option value="12">1-2 years</option>
+                        <option value="24">2-5 years</option>
+                        <option value="60">5+ years</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="calculateBtn">ANALYZE WITH AI</button>
+            </form>
+        </div>
+
+        <div class="result-container" id="resultContainer">
+            <h2 class="result-title" id="resultTitle">AI LOVE ANALYSIS</h2>
+            <div class="result-score" id="resultScore">0</div>
+            <p class="result-description" id="resultDescription"></p>
+            
+            <div class="compatibility-factors">
+                <div class="factor">
+                    <div class="factor-title">Emotional Bond</div>
+                    <div class="factor-bar">
+                        <div class="factor-progress" id="emotionalBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="factor">
+                    <div class="factor-title">Communication</div>
+                    <div class="factor-bar">
+                        <div class="factor-progress" id="communicationBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="factor">
+                    <div class="factor-title">Long-Term Potential</div>
+                    <div class="factor-bar">
+                        <div class="factor-progress" id="potentialBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="factor">
+                    <div class="factor-title">Passion & Chemistry</div>
+                    <div class="factor-bar">
+                        <div class="factor-progress" id="passionBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="action-btn" id="saveBtn">
+                    <span>💾</span> Save Result
+                </button>
+                <button class="action-btn" id="adviceBtn">
+                    <span>🤖</span> Get AI Advice
+                </button>
+                <button class="action-btn" id="horoscopeBtn">
+                    <span>🔮</span> 2025 Horoscope
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 AI Love Future Predictor | Neural Love Analysis Engine v4.0</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Three.js 3D Heart Animation
+            const canvas = document.getElementById('threejs-canvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            canvas.appendChild(renderer.domElement);
+
+            // Create hearts
+            const hearts = [];
+            const heartGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+            const heartMaterial = new THREE.MeshBasicMaterial({ 
+                color: 0xff4d6d,
+                transparent: true,
+                opacity: 0.7
+            });
+
+            for (let i = 0; i < 50; i++) {
+                const heart = new THREE.Mesh(heartGeometry, heartMaterial);
+                heart.position.x = (Math.random() - 0.5) * 10;
+                heart.position.y = (Math.random() - 0.5) * 10;
+                heart.position.z = (Math.random() - 0.5) * 10;
+                heart.userData = {
+                    speed: Math.random() * 0.02 + 0.01,
+                    rotationSpeed: Math.random() * 0.02 + 0.01
+                };
+                scene.add(heart);
+                hearts.push(heart);
+            }
+
+            camera.position.z = 5;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                hearts.forEach(heart => {
+                    heart.position.y -= heart.userData.speed;
+                    heart.rotation.x += heart.userData.rotationSpeed;
+                    heart.rotation.y += heart.userData.rotationSpeed;
+                    if (heart.position.y < -5) {
+                        heart.position.y = 5;
+                        heart.position.x = (Math.random() - 0.5) * 10;
+                        heart.position.z = (Math.random() - 0.5) * 10;
+                    }
+                });
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Theme Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+                if (document.body.classList.contains('light-mode')) {
+                    themeIcon.textContent = '☀️';
+                } else {
+                    themeIcon.textContent = '🌙';
+                }
+            });
+
+            // AI Prediction Form
+            const form = document.getElementById('loveCalculator');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                runAIAnalysis();
+            });
+
+            function runAIAnalysis() {
+                const btn = document.getElementById('calculateBtn');
+                btn.disabled = true;
+                btn.textContent = 'AI ANALYZING...';
+
+                // Simulate AI processing
+                setTimeout(() => {
+                    const name1 = document.getElementById('name1').value;
+                    const name2 = document.getElementById('name2').value;
+                    const birthdate1 = new Date(document.getElementById('birthdate1').value);
+                    const birthdate2 = new Date(document.getElementById('birthdate2').value);
+                    const personality1 = document.getElementById('personality1').value;
+                    const personality2 = document.getElementById('personality2').value;
+                    const relationshipLength = parseInt(document.getElementById('relationshipLength').value);
+
+                    // AI "Machine Learning" (simulated)
+                    const aiScore = calculateAIScore(name1, name2, birthdate1, birthdate2, personality1, personality2, relationshipLength);
+                    displayAIResult(name1, name2, aiScore, personality1, personality2);
+
+                    btn.disabled = false;
+                    btn.textContent = 'RE-ANALYZE WITH AI';
+                }, 2000);
+            }
+
+            function calculateAIScore(name1, name2, date1, date2, personality1, personality2, months) {
+                // Simulate AI analysis with weighted factors
+                const nameMatch = (name1.length + name2.length) % 100; // Fun name-based score
+                const zodiacCompatibility = getZodiacMatch(date1, date2);
+                const personalityMatch = getPersonalityMatch(personality1, personality2);
+                const timeFactor = Math.min(100, 50 + (months * 0.8)); // More time = higher score
+
+                // AI "weights" (simulated neural network)
+                const aiPrediction = (
+                    (nameMatch * 0.1) +
+                    (zodiacCompatibility * 0.3) +
+                    (personalityMatch * 0.4) +
+                    (timeFactor * 0.2)
+                );
+
+                return Math.min(100, Math.round(aiPrediction));
+            }
+
+            function getZodiacMatch(date1, date2) {
+                const signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
+                const sign1 = signs[Math.floor(date1.getMonth() / 4)];
+                const sign2 = signs[Math.floor(date2.getMonth() / 4)];
+                
+                // Simulated AI zodiac compatibility
+                if (sign1 === sign2) return 90; // Same sign
+                if ((sign1 === "Aries" && sign2 === "Leo") || (sign1 === "Leo" && sign2 === "Aries")) return 95;
+                if ((sign1 === "Taurus" && sign2 === "Virgo") || (sign1 === "Virgo" && sign2 === "Taurus")) return 85;
+                if ((sign1 === "Gemini" && sign2 === "Libra") || (sign1 === "Libra" && sign2 === "Gemini")) return 88;
+                return 70; // Neutral match
+            }
+
+            function getPersonalityMatch(type1, type2) {
+                // Simplified personality compatibility
+                if (type1 === type2) return 80; // Same type
+                
+                const firstLetter1 = type1.charAt(0);
+                const firstLetter2 = type2.charAt(0);
+                
+                // Extravert + Introvert balance
+                if ((firstLetter1 === 'E' && firstLetter2 === 'I') || (firstLetter1 === 'I' && firstLetter2 === 'E')) {
+                    return 85; // Often complementary
+                }
+                
+                // Intuitive pairs
+                if (type1.includes('N') && type2.includes('N')) return 90;
+                
+                // Sensing pairs
+                if (type1.includes('S') && type2.includes('S')) return 75;
+                
+                return 70; // Neutral
+            }
+
+            function displayAIResult(name1, name2, score, personality1, personality2) {
+                const resultContainer = document.getElementById('resultContainer');
+                const resultTitle = document.getElementById('resultTitle');
+                const resultScore = document.getElementById('resultScore');
+                const resultDesc = document.getElementById('resultDescription');
+                
+                resultTitle.textContent = `${name1} & ${name2}'s AI Love Forecast`;
+                resultScore.textContent = score;
+                
+                // AI-generated insights
+                let aiInsight = "";
+                if (score >= 90) {
+                    aiInsight = `✨ **AI Prediction**: "${name1} (${personality1}) and ${name2} (${personality2}), your bond is exceptional! Our neural network predicts a 97.3% chance of long-term happiness. 2025 will bring deeper connection and possibly a major milestone (engagement, moving in, etc.). Keep nurturing this rare love!"`;
+                } else if (score >= 75) {
+                    aiInsight = `🌟 **AI Prediction**: "${name1} (${personality1}) and ${name2} (${personality2}), your compatibility is strong (82% alignment). The AI suggests focusing on communication to reach 'perfect match' status. 2025 forecasts growth in emotional intimacy."`;
+                } else if (score >= 60) {
+                    aiInsight = `💡 **AI Prediction**: "${name1} (${personality1}) and ${name2} (${personality2}), your relationship has potential (${score}% match). Our AI detects areas for improvement—try new shared activities in 2025 to strengthen your connection."`;
+                } else {
+                    aiInsight = `🔍 **AI Prediction**: "${name1} (${personality1}) and ${name2} (${personality2}), our analysis shows some challenges (${score}% alignment). The AI recommends open conversations about values and expectations for 2025."`;
+                }
+                
+                resultDesc.innerHTML = aiInsight;
+                resultContainer.style.display = 'block';
+                
+                // Animate results
+                animateValue('resultScore', 0, score, 1500);
+                
+                setTimeout(() => {
+                    animateBar('emotionalBar', Math.min(100, score + 5));
+                    animateBar('communicationBar', Math.min(100, score - 10));
+                    animateBar('potentialBar', Math.min(100, score + 3));
+                    animateBar('passionBar', Math.min(100, score + 8));
+                }, 500);
+                
+                // Scroll to results
+                setTimeout(() => {
+                    resultContainer.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+
+            // Action Buttons
+            document.getElementById('saveBtn').addEventListener('click', () => {
+                alert('Feature coming soon: Save your result as an image!');
+            });
+
+            document.getElementById('adviceBtn').addEventListener('click', () => {
+                const advice = generateAIAdvice();
+                alert(`🤖 AI Love Advice:\n\n${advice}`);
+            });
+
+            document.getElementById('horoscopeBtn').addEventListener('click', () => {
+                const horoscope = generateHoroscope();
+                alert(`🔮 2025 Love Horoscope:\n\n${horoscope}`);
+            });
+
+            function generateAIAdvice() {
+                const tips = [
+                    "Schedule regular 'us time' without distractions.",
+                    "Try something new together every month to keep the spark alive.",
+                    "Practice active listening - repeat what your partner says before responding.",
+                    "Express gratitude daily for small things your partner does.",
+                    "Maintain your individual hobbies and friendships for a balanced relationship.",
+                    "Learn your partner's love language and speak it often.",
+                    "Don't go to bed angry - resolve conflicts before sleeping.",
+                    "Surprise each other with small, thoughtful gestures.",
+                    "Create shared goals to work towards together.",
+                    "Remember that relationships take work from both sides."
+                ];
+                return tips[Math.floor(Math.random() * tips.length)];
+            }
+
+            function generateHoroscope() {
+                const predictions = [
+                    "2025 will be a year of deep emotional connection for you two. Expect a major relationship milestone around September!",
+                    "The stars align for romance in 2025! Your bond will grow stronger, especially during summer months.",
+                    "2025 brings tests but also growth. Communication will be key to navigating challenges successfully.",
+                    "A year of passion and adventure awaits! Travel together to strengthen your connection.",
+                    "The cosmos predict stability and comfort in 2025. Focus on building a secure future together."
+                ];
+                return predictions[Math.floor(Math.random() * predictions.length)];
+            }
+
+            function animateValue(id, start, end, duration) {
+                const element = document.getElementById(id);
+                let startTime = null;
+                
+                const updateValue = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                    const value = Math.floor(progress * (end - start) + start);
+                    element.textContent = value;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(updateValue);
+                    }
+                };
+                
+                window.requestAnimationFrame(updateValue);
+            }
+
+            function animateBar(id, percent) {
+                const bar = document.getElementById(id);
+                bar.style.width = `${percent}%`;
+            }
+
+            // Responsive Three.js
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        });
+    </script>
+</body>
+</html>
